@@ -12,6 +12,9 @@ analyzer:
     implicit-casts: false
     implicit-dynamic: false
 
+  exclude:
+    - '**/*.gr.dart'
+
 # entry to configure linter rules.
 linter:
   # A list of all available lints and their documentation is published at

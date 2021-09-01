@@ -22,12 +22,21 @@ dependencies:
   # UI
   cupertino_icons: ^1.0.2
 
+  # Router(Navigation)
+  auto_route: ^2.3.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # Runner
+  build_runner: ^2.1.1
+
   # Lint
   flutter_lints: ^1.0.4
+
+  # Router(Navigation)
+  auto_route_generator: ^2.1.0
 
 flutter:
   uses-material-design: true
