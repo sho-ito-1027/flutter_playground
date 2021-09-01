@@ -1,0 +1,46 @@
+# Additional information about this file can be found at
+# https://dart.dev/guides/language/analysis-options
+
+# url to bring in options from the specified URL — in this case, from a file in
+# the lints package. Because YAML doesn't allow duplicate keys, you can include
+# at most one file.
+include: package:flutter_lints/flutter.yaml
+
+# entry to customize static analysis
+analyzer:
+  strong-mode:
+    implicit-casts: false
+    implicit-dynamic: false
+
+# entry to configure linter rules.
+linter:
+  # A list of all available lints and their documentation is published at
+  # https://dart-lang.github.io/linter/lints/index.html.
+  rules:
+    # flutter default rules
+    # error rules
+    - cancel_subscriptions
+    - close_sinks
+    - control_flow_in_finally
+    - empty_statements
+    - hash_and_equals
+    - test_types_in_equals
+    - throw_in_finally
+    - unnecessary_statements
+
+    # style rules
+    - avoid_types_on_closure_parameters
+    - avoid_void_async
+    - await_only_futures
+    - camel_case_types
+    - constant_identifier_names
+    - implementation_imports
+    - non_constant_identifier_names
+    - package_api_docs
+    - package_names
+    - package_prefixed_library_names
+    - unnecessary_brace_in_string_interps
+    - unnecessary_getters_setters
+    - unnecessary_new
+
+    # add rules
