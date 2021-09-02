@@ -4,9 +4,9 @@ import 'package:flutter_playground/ui/playground.dart';
 export 'router.gr.dart';
 
 @MaterialAutoRouter(
-  replaceInRouteName: 'Screen,Route',
+  replaceInRouteName: 'Page,Route',
   routes: <AutoRoute<void>>[
-    AutoRoute(page: PlaygroundScreen, initial: true),
+    AutoRoute(page: PlaygroundPage, initial: true),
   ],
 )
 class $RootRouter {}
