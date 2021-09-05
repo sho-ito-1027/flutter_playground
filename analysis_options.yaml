@@ -15,6 +15,7 @@ analyzer:
   exclude:
     - '**/*.gr.dart'
     - '**/*.gen.dart'
+    - '**/l10n/*.dart'
 
 # entry to configure linter rules.
 linter:

@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/l10n/l10n.dart';
 import 'package:flutter_playground/router/router.dart';
 
 class PlaygroundPage extends StatelessWidget {
@@ -15,9 +16,11 @@ class PlaygroundPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = L10n.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('playground'),
+        title: Text(l10n.helloWorld),
       ),
       body: ListView.builder(
         itemCount: items.length,
