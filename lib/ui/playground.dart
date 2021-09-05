@@ -8,7 +8,7 @@ class PlaygroundPage extends StatelessWidget {
   static const _titleKey = 'titleKey';
   static const _routeKey = 'routeKey';
   final List<Map<String, Object>> items = const [
-    {_titleKey: 'ボタン', _routeKey: ButtonRoute()},
+    {_titleKey: 'minimum size button', _routeKey: MinimumSizeButtonRoute()},
   ];
 
   @override
