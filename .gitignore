@@ -49,6 +49,7 @@ doc/api/
 
 # Flutter/Dart/Pub generate file
 **/*.gr.dart
+**/*.gen.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
