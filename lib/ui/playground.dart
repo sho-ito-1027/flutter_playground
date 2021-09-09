@@ -12,6 +12,7 @@ class PlaygroundPage extends StatelessWidget {
     {_titleKey: 'minimum size button', _routeKey: MinimumSizeButtonRoute()},
     {_titleKey: 'text button icon', _routeKey: TextButtonIconRoute()},
     {_titleKey: 'each box fit', _routeKey: EachBoxFitRoute()},
+    {_titleKey: 'crash semantics', _routeKey: CrashSemanticsRoute()},
   ];
 
   @override
