@@ -30,6 +30,10 @@ dependencies:
   # Localization
   intl: ^0.17.0
 
+  # Architecture
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^1.0.0-dev.7
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
