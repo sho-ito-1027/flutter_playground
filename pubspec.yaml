@@ -13,7 +13,7 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.12.0 <3.0.0"
   # required flutter version
-  flutter: '>=2.2.3'
+  flutter: '>=2.5.0'
 
 dependencies:
   flutter:
