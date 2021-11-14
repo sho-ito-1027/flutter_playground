@@ -58,6 +58,10 @@ android {
         }
     }
 
+    // signingConfigs
+    apply from: 'signingConfigs/staging.gradle', to: android
+    apply from: 'signingConfigs/product.gradle', to: android
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
