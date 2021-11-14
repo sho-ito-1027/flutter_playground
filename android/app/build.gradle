@@ -41,6 +41,23 @@ android {
         versionName flutterVersionName
     }
 
+    flavorDimensions "flavor"
+    productFlavors {
+        develop {
+            dimension "flavor"
+            applicationIdSuffix ".dev"
+            versionNameSuffix ".dev"
+        }
+        staging {
+            dimension "flavor"
+            applicationIdSuffix ".stg"
+            versionNameSuffix ".stg"
+        }
+        product {
+            dimension "flavor"
+        }
+    }
+
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
