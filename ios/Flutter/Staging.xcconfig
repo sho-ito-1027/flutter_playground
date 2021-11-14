@@ -1,1 +1,3 @@
-
+// Packaging
+PRODUCT_BUNDLE_IDENTIFIER = jp.aryzae.flutterPlayground.stg
+DISPLAY_NAME = FlutterPG
