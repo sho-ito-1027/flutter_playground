@@ -2,3 +2,6 @@
 
 // Workaround Archive Error
 TRACK_WIDGET_CREATION=
+
+// Flutter Setting
+FLUTTER_BUILD_MODE = release
