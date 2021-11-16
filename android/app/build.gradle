@@ -68,12 +68,14 @@ android {
             debuggable true
         }
         release {
-            // http://stackoverflow.com/questions/29618363/signing-config-per-flavor-not-working
-            signingConfig null
             productFlavors.staging.signingConfig signingConfigs.stagingRelease
             productFlavors.product.signingConfig signingConfigs.productRelease
             debuggable false
         }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 }
 
