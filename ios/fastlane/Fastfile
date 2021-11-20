@@ -1,0 +1,111 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# define
+IOS_FILE_PATH = "./build/ios/outputs/flutter-ipa/"
+IOS_ARCHIVE_PATH = "./build/ios/archive/Runner.xcarchive"
+IOS_STAGING_FILE_NAME = "app-staging-release.ipa"
+IOS_PRODUCT_FILE_NAME = "app-production-release.ipa"
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc "clean and build for options"
+  lane :build do |options|
+    # clean
+    sh("fvm flutter clean")
+
+    if options[:env] == ENV_STAGING
+      # ipa用のxcarchiveをstagingビルド
+      sh("fvm flutter build ipa --flavor staging --dart-define=FLAVOR=staging --obfuscate --split-debug-info=symbols")
+    elsif options[:env] == ENV_PRODUCTION
+      # ipa用のxcarchiveをproductionビルド
+      sh("fvm flutter build ipa --flavor product --dart-define=FLAVOR=product --obfuscate --split-debug-info=symbols")
+    end
+  end
+
+  desc "export ipa from xcarchive for options"
+  lane :export do |options|
+    # variable 
+    SCHEME = ""
+    CONFIGURATION = ""
+    EXPORT_METHOD = ""
+    OUTPUT_NAME = ""
+
+    if options[:env] == ENV_STAGING
+      SCHEME = "Staging"
+      CONFIGURATION = "Release-Staging"
+      EXPORT_METHOD = "development"
+      OUTPUT_NAME = IOS_STAGING_FILE_NAME
+    elsif options[:env] == ENV_PRODUCT
+      SCHEME = "Product"
+      CONFIGURATION = "Release-Product"
+      EXPORT_METHOD = "app-store"
+      OUTPUT_NAME = IOS_PRODUCT_FILE_NAME
+    end
+
+    # ipaファイルexport
+    build_app(
+      workspace: "./ios/Runner.xcworkspace",
+      scheme: SCHEME,
+      configuration: CONFIGURATION,
+      export_options: {
+        method: EXPORT_METHOD
+      },
+      clean: false,
+      output_name: OUTPUT_NAME,
+      output_directory: IOS_FILE_PATH,
+      skip_build_archive: true,
+      skip_archive: false,
+      archive_path: IOS_ARCHIVE_PATH
+    )
+  end
+
+  desc "releaes note for Firebase App Distribution"
+  lane :get_release_notes do
+
+    # merge commitされたhashを最新から2件取得
+    hash = sh("git log HEAD --merges --pretty=format:\"%h\" -2")
+    # 2件取得したhashを配列として分割
+    hashAry = hash.split("\n")
+    
+    release_notes = sh("date") + "\n"
+
+    if hashAry.length > 1  
+      # merge commitされた最新〜1つ前の間にあるcommit messageを10件取得
+      release_notes += sh("git", "log", hashAry.first, hashAry.last, "--no-merges", "--pretty=format:\"%s\"", "-10")
+    end
+  end
+
+  desc "Build staging and publish Firebase App Distribution."
+  lane :staging do
+    env_value = ENV_STAGING
+    # build
+    build env:env_value
+    # export 
+    export env:env_value
+    # relese notes 取得
+    release_notes = get_release_notes
+    # Firebase App Distribtuonにアップロード
+    firebase_app_distribution(
+      app: "1:263685238953:ios:5b9a24081ba28997b879b8",
+      ipa_path: IOS_FILE_PATH + IOS_STAGING_FILE_NAME,
+      release_notes: release_notes,
+      groups: FIREBASE_TEST_GROUP,
+      debug: false
+    )
+  end
+end

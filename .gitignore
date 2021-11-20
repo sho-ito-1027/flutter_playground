@@ -66,3 +66,16 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /android/app/signingConfigs
+
+# Xcode, iOS, CocoaPods
+ios/build/
+
+# bundler and fastlane
+vendor/
+fastlane/report.xml
+fastlane/README.md
+**/Appfile
+
+# Firebase file
+**/google-services.json
+**/GoogleService-info*.plist
