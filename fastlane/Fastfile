@@ -1,0 +1,6 @@
+import "../android/fastlane/Fastfile"
+import "../ios/fastlane/Fastfile"
+
+ENV_STAGING = "staging"
+ENV_PRODUCT = "product"
+FIREBASE_TEST_GROUP = "tester"

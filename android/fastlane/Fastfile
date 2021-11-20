@@ -1,0 +1,70 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+# define
+ANDROID_STAGING_APK_PATH = "./build/app/outputs/apk/staging/release/app-staging-release.apk"
+ANDROID_PRODUCT_AAB_PATH = "./build/app/outputs/bundle/productionRelease/app-production-release.aab"
+
+default_platform(:android)
+
+platform :android do
+
+  desc "clean and build for options"
+  lane :build do |options|
+    # clean
+    sh("fvm flutter clean")
+
+    if options[:env] == ENV_STAGING
+      # aabをstagingビルド
+      sh("fvm flutter build apk --flavor staging --dart-define=FLAVOR=staging --obfuscate --split-debug-info=symbols")
+    elsif options[:env] == ENV_PRODUCT
+      # aabをproductビルド
+      sh("fvm flutter build appbundle --flavor product --dart-define=FLAVOR=product --obfuscate --split-debug-info=symbols")
+    end
+  end
+
+  desc "releaes note for Firebase App Distribution"
+  lane :get_release_notes do
+
+    # merge commitされたhashを最新から2件取得
+    hash = sh("git log HEAD --merges --pretty=format:\"%h\" -2")
+    # 2件取得したhashを配列として分割
+    hashAry = hash.split("\n")
+    
+    release_notes = sh("date") + "\n"
+
+    if hashAry.length > 1  
+      # merge commitされた最新〜1つ前の間にあるcommit messageを10件取得
+      release_notes += sh("git", "log", hashAry.first, hashAry.last, "--no-merges", "--pretty=format:\"%s\"", "-10")
+    end
+  end
+
+  desc "Build staging and publish Firebase App Distribution."
+  lane :staging do |options|
+    env_value = ENV_STAGING
+    # build
+    build env:env_value
+    # relese notes 取得
+    release_notes = get_release_notes
+    # Firebase App Distribtuonにアップロード
+    firebase_app_distribution(
+      app: "1:263685238953:android:bddcb4a9f53e5a09b879b8",
+      apk_path: ANDROID_STAGING_APK_PATH,
+      release_notes: release_notes,
+      groups: FIREBASE_TEST_GROUP,
+      debug: false
+    )
+  end
+end
