@@ -17,7 +17,7 @@
 IOS_FILE_PATH = "./build/ios/outputs/flutter-ipa/"
 IOS_ARCHIVE_PATH = "./build/ios/archive/Runner.xcarchive"
 IOS_STAGING_FILE_NAME = "app-staging-release.ipa"
-IOS_PRODUCT_FILE_NAME = "app-production-release.ipa"
+IOS_PRODUCT_FILE_NAME = "app-product-release.ipa"
 
 default_platform(:ios)
 
