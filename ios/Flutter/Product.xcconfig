@@ -1,0 +1,6 @@
+// Packaging
+PRODUCT_BUNDLE_IDENTIFIER = jp.aryzae.flutterPlayground
+DISPLAY_NAME = FlutterPG
+
+// Flutter Setting
+FLUTTER_FLAVOR = Product

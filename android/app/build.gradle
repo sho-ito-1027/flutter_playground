@@ -41,12 +41,41 @@ android {
         versionName flutterVersionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+    flavorDimensions "flavor"
+    productFlavors {
+        develop {
+            dimension "flavor"
+            applicationIdSuffix ".dev"
+            versionNameSuffix ".dev"
         }
+        staging {
+            dimension "flavor"
+            applicationIdSuffix ".stg"
+            versionNameSuffix ".stg"
+        }
+        product {
+            dimension "flavor"
+        }
+    }
+
+    // signingConfigs
+    apply from: 'signingConfigs/staging.gradle', to: android
+    apply from: 'signingConfigs/product.gradle', to: android
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+            debuggable true
+        }
+        release {
+            productFlavors.staging.signingConfig signingConfigs.stagingRelease
+            productFlavors.product.signingConfig signingConfigs.productRelease
+            debuggable false
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
     }
 }
 
