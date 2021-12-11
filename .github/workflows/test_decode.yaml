@@ -1,0 +1,30 @@
+# Docs: https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
+# Actions Marketplace: https://github.com/marketplace
+
+name: test decode
+
+on:
+  push:
+    branches: [ test/decode ]
+
+  # Actionsタブから手動実行を許可
+  workflow_dispatch:
+
+jobs:
+  # job名
+  test_decode:
+    # 実行環境
+    runs-on: ubuntu-latest
+    # jobに含まれるタスク群
+    steps:
+      - name: Decode gradle
+        run: |
+          echo "${{ secrets.TEST_GRADLE_BASE64 }}" | base64 --decode > test.gradle
+
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.TEST_KEYSTORE_BASE64 }}" | base64 --decode > test.keystore
+
+      - name: ls -al
+        run: |
+          ls -al
