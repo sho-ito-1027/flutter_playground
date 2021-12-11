@@ -28,3 +28,15 @@ jobs:
       - name: ls -al
         run: |
           ls -al
+
+      - name: compare
+        run: |
+          mkdir artifacts
+          echo "${{ secrets.TEST_KEYSTORE_BASE64 }}" > artifacts/echo_args.txt
+          cat <<< "${{ secrets.TEST_KEYSTORE_BASE64 }}" > artifacts/here_strings.txt
+
+      - name: Archive 
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts
+          path: ./artifacts
