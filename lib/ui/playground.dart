@@ -14,6 +14,11 @@ class PlaygroundPage extends StatelessWidget {
     {_titleKey: 'each box fit', _routeKey: EachBoxFitRoute()},
     {_titleKey: 'crash semantics', _routeKey: CrashSemanticsRoute()},
     {_titleKey: 'hooks riverpod sample', _routeKey: TempSampleRoute()},
+    {_titleKey: 'fixed footer sample', _routeKey: FixedFooterRoute()},
+    {
+      _titleKey: 'modal fixed footer sample',
+      _routeKey: ModalFixedFooterRoute()
+    },
   ];
 
   @override
