@@ -9,6 +9,7 @@ import 'package:flutter_playground/ui/image/each_box_fix_page.dart';
 import 'package:flutter_playground/ui/playground.dart';
 import 'package:flutter_playground/ui/safe_area/dirty_safe_area_page.dart';
 import 'package:flutter_playground/ui/safe_area/list_view_safe_area_page.dart';
+import 'package:flutter_playground/ui/safe_area/safe_area_root_page.dart';
 import 'package:flutter_playground/ui/safe_area/smart_safe_area_page.dart';
 
 export 'router.gr.dart';
@@ -24,6 +25,7 @@ export 'router.gr.dart';
     AutoRoute(page: MinimumSizeButtonPage),
     AutoRoute(page: ModalFixedFooterPage),
     AutoRoute(page: PlaygroundPage, initial: true),
+    AutoRoute(page: SafeAreaRootPage),
     AutoRoute(page: SmartSafeAreaPage, fullscreenDialog: true),
     AutoRoute(page: TempSamplePage),
     AutoRoute(page: TextButtonIconPage),
