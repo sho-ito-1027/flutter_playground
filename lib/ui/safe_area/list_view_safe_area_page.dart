@@ -5,6 +5,22 @@ class ListViewSafeAreaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final numbers = [for (int i = 0; i < 20; i++) i];
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('list view safe area'),
+      ),
+      body: ListView.builder(
+        itemCount: numbers.length,
+        itemBuilder: (context, index) {
+          final number = numbers[index];
+
+          return ListTile(
+            title: Text('$number'),
+          );
+        },
+      ),
+    );
   }
 }
