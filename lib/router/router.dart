@@ -11,12 +11,12 @@ export 'router.gr.dart';
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute<void>>[
-    AutoRoute(page: PlaygroundPage, initial: true),
-    AutoRoute(page: MinimumSizeButtonPage),
-    AutoRoute(page: TextButtonIconPage),
-    AutoRoute(page: EachBoxFitPage),
     AutoRoute(page: CrashSemanticsPage),
+    AutoRoute(page: EachBoxFitPage),
+    AutoRoute(page: MinimumSizeButtonPage),
+    AutoRoute(page: PlaygroundPage, initial: true),
     AutoRoute(page: TempSamplePage),
+    AutoRoute(page: TextButtonIconPage),
   ],
 )
 class $RootRouter {}
