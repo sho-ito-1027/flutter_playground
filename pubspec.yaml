@@ -34,6 +34,9 @@ dependencies:
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^1.0.0
 
+  # Model
+  freezed_annotation: ^1.1.0
+
   # Firebase
   firebase_core: ^1.10.0
   firebase_analytics: ^8.3.4
@@ -51,6 +54,9 @@ dev_dependencies:
 
   # Router(Navigation)
   auto_route_generator: ^3.2.3
+
+  # Model
+  freezed: ^1.1.0
 
 flutter:
   uses-material-design: true
