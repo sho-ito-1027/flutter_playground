@@ -19,6 +19,7 @@ class PlaygroundPage extends StatelessWidget {
       _titleKey: 'modal fixed footer sample',
       _routeKey: ModalFixedFooterRoute()
     },
+    {_titleKey: 'safe area sample', _routeKey: SafeAreaRootRoute()},
   ];
 
   @override

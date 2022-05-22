@@ -23,6 +23,7 @@ dependencies:
 
   # UI
   cupertino_icons: ^1.0.2
+  colorful_safe_area: ^0.3.0
 
   # Router(Navigation)
   auto_route: ^3.2.3
@@ -33,6 +34,9 @@ dependencies:
   # Architecture
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^1.0.0
+
+  # Model
+  freezed_annotation: ^1.1.0
 
   # Firebase
   firebase_core: ^1.10.0
@@ -51,6 +55,9 @@ dev_dependencies:
 
   # Router(Navigation)
   auto_route_generator: ^3.2.3
+
+  # Model
+  freezed: ^1.1.0
 
 flutter:
   uses-material-design: true

@@ -51,6 +51,7 @@ doc/api/
 **/*.gr.dart
 **/*.gen.dart
 **/l10n/*.dart
+**/*.freezed.dart
 
 # Web related
 lib/generated_plugin_registrant.dart
