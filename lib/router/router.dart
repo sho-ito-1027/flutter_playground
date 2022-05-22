@@ -7,6 +7,7 @@ import 'package:flutter_playground/ui/fixed_footer/modal_fixed_footer_page.dart'
 import 'package:flutter_playground/ui/hooks_riverpod/temp_sample_page.dart';
 import 'package:flutter_playground/ui/image/each_box_fix_page.dart';
 import 'package:flutter_playground/ui/playground.dart';
+import 'package:flutter_playground/ui/safe_area/smart_safe_area_page.dart';
 
 export 'router.gr.dart';
 
@@ -19,6 +20,7 @@ export 'router.gr.dart';
     AutoRoute(page: MinimumSizeButtonPage),
     AutoRoute(page: ModalFixedFooterPage),
     AutoRoute(page: PlaygroundPage, initial: true),
+    AutoRoute(page: SmartSafeAreaPage),
     AutoRoute(page: TempSamplePage),
     AutoRoute(page: TextButtonIconPage),
   ],
