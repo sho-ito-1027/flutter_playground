@@ -1,4 +1,3 @@
-import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:flutter/material.dart';
 
 class SmartSafeAreaPage extends StatelessWidget {
@@ -12,17 +11,14 @@ class SmartSafeAreaPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('smart safe area'),
       ),
-      body: ColorfulSafeArea(
-        overflowRules: const OverflowRules.all(true),
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: Column(
-              children: numbers
-                  .map(
-                    (e) => ListTile(title: Text('$e')),
-                  )
-                  .toList(),
-            ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            children: numbers
+                .map(
+                  (e) => ListTile(title: Text('$e')),
+                )
+                .toList(),
           ),
         ),
       ),

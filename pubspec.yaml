@@ -23,7 +23,6 @@ dependencies:
 
   # UI
   cupertino_icons: ^1.0.2
-  colorful_safe_area: ^0.3.0
 
   # Router(Navigation)
   auto_route: ^3.2.3
