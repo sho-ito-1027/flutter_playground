@@ -33,26 +33,28 @@ class FruitsListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Column(
-          children: fruits
-              .map(
-                (e) => Column(
-                  children: [
-                    ListTile(
-                      leading: Text(
-                        e.emoji,
-                        style: const TextStyle(fontSize: 32.0),
+        child: SafeArea(
+          child: Column(
+            children: fruits
+                .map(
+                  (e) => Column(
+                    children: [
+                      ListTile(
+                        leading: Text(
+                          e.emoji,
+                          style: const TextStyle(fontSize: 32.0),
+                        ),
+                        title: Text(
+                          e.name,
+                          style: const TextStyle(fontSize: 24.0),
+                        ),
                       ),
-                      title: Text(
-                        e.name,
-                        style: const TextStyle(fontSize: 24.0),
-                      ),
-                    ),
-                    const Divider(height: 1.0),
-                  ],
-                ),
-              )
-              .toList(),
+                      const Divider(height: 1.0),
+                    ],
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );
