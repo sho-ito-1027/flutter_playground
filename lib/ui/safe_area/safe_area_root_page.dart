@@ -27,6 +27,10 @@ class SafeAreaRootPage extends StatelessWidget {
       title: 'smart safe area',
       routeInfo: SmartSafeAreaRoute(),
     ),
+    SafeAreaModel(
+      title: ' fruits list sample',
+      routeInfo: FruitsListRoute(),
+    ),
   ];
 
   @override
