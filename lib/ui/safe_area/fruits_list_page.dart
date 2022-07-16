@@ -32,30 +32,23 @@ class FruitsListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: fruits
-                .map(
-                  (e) => Column(
-                    children: [
-                      ListTile(
-                        leading: Text(
-                          e.emoji,
-                          style: const TextStyle(fontSize: 32.0),
-                        ),
-                        title: Text(
-                          e.name,
-                          style: const TextStyle(fontSize: 24.0),
-                        ),
-                      ),
-                      const Divider(height: 1.0),
-                    ],
-                  ),
-                )
-                .toList(),
-          ),
-        ),
+      body: ListView.separated(
+        itemBuilder: (_, index) {
+          final fruit = fruits[index];
+
+          return ListTile(
+            leading: Text(
+              fruit.emoji,
+              style: const TextStyle(fontSize: 32.0),
+            ),
+            title: Text(
+              fruit.name,
+              style: const TextStyle(fontSize: 24.0),
+            ),
+          );
+        },
+        separatorBuilder: (_, __) => const Divider(height: 1.0),
+        itemCount: fruits.length,
       ),
     );
   }
