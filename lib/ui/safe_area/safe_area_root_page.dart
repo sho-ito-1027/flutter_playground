@@ -8,6 +8,14 @@ class SafeAreaRootPage extends StatelessWidget {
 
   static const models = <SafeAreaModel>[
     SafeAreaModel(
+      title: 'display safe area with bars',
+      routeInfo: DisplaySafeAreaWithBarsRoute(),
+    ),
+    SafeAreaModel(
+      title: 'display safe area without bars',
+      routeInfo: DisplaySafeAreaWithoutBarsRoute(),
+    ),
+    SafeAreaModel(
       title: 'dirty safe area',
       routeInfo: DirtySafeAreaRoute(),
     ),
@@ -18,6 +26,10 @@ class SafeAreaRootPage extends StatelessWidget {
     SafeAreaModel(
       title: 'smart safe area',
       routeInfo: SmartSafeAreaRoute(),
+    ),
+    SafeAreaModel(
+      title: ' fruits list sample',
+      routeInfo: FruitsListRoute(),
     ),
   ];
 
